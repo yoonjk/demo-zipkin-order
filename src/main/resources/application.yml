@@ -1,0 +1,11 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: zipkin-order
+  zipkin:
+    baseUrl: http://${ZIPKIN_HOST}:${ZIPKIN_PORT}/
+  sleuth:
+    enabled: true
+    sampler:
+      probability: 1.0
