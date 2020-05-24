@@ -3,9 +3,16 @@ server:
 spring:
   application:
     name: zipkin-order
-  zipkin:
-    baseUrl: http://${ZIPKIN_HOST}:${ZIPKIN_PORT}/
-  sleuth:
-    enabled: true
-    sampler:
-      probability: 1.0
+#  zipkin:
+#    baseUrl: http://${ZIPKIN_HOST}:${ZIPKIN_PORT}/
+#    service.name: http-service
+#  sleuth:
+#    enabled: true
+#    sampler:
+#      probability: 1.0
+
+opentracing:
+  jaeger:
+    udp-sender:
+      host: ${JAEGER_AGENT}
+      port: ${JAEGER_AGENT_PORT}

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-order
+  labels:
+    app: demo-order
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-order
+  template:
+    metadata:
+      labels:
+        app: demo-order
+    spec:
+      containers:
+      - name: demo-order
+        image: nexweb1/demo-zipkin-order:0.55
+        ports:
+        - containerPort: 8081
+        env:
+        - name: JAEGER_AGENT
+          value: jaeger-agent.kube-system
+        - name: JAEGER_AGENT_PORT
+          value: "6831"
